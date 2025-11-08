@@ -1,0 +1,64 @@
+# Unity generated folders
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+MemoryCaptures/
+Recordings/
+
+# Visual Studio / VS Code generated files
+.vs/
+.vscode/
+*.sln
+*.csproj
+*.unityproj
+*.suo
+*.tmp
+*.user
+*.userprefs
+
+# Auto-generated files
+*.pidb
+*.booproj
+*.svd
+*.pdb
+
+# OS junk files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Package manager cache
+Packages/com.unity.package-manager/
+
+# Crash Reports
+sysinfo.txt
+
+# Build outputs
+*.apk
+*.aab
+*.xcodeproj
+*.xcworkspace
+*.app
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Other Unity cache
+obj/
+Temp/
+Logs/
+Build/
+Builds/
+Library/
+
+# Unity auto backups
+*.bak
+*.tmp
+*.old
+*.backup

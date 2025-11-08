@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: d3ed5715dd4124f49b8c90b7c9dfa20b
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 170705
+  packageName: 'Modular House Interior Kit - Lowpoly RPG Assets [Complete Indoor
+    Environment]'
+  packageVersion: 2.2
+  assetPath: Assets/ZerinLabs_enviroKit_RetroInteriors/ScriptsEditor/scrEdit_objectGridRepositioneer.cs
+  uploadId: 749637
