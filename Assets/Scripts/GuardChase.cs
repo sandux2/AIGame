@@ -22,7 +22,7 @@ public class GuardChase : MonoBehaviour
         {
             agent.SetDestination(player.position);
 
-            // Check distance only on the XZ plane (ignore Y height)
+            // Check distance only on the XZ plane
             Vector3 guardPos = new Vector3(transform.position.x, 0, transform.position.z);
             Vector3 playerPos = new Vector3(player.position.x, 0, player.position.z);
 
@@ -45,7 +45,7 @@ public class GuardChase : MonoBehaviour
         Debug.Log("🚨 Guard started chasing the player!");
     }
 
-    // Optional: stop chasing if player escapes
+    // stop chasing if player escapes
     public void StopChasing()
     {
         isChasing = false;

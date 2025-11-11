@@ -10,7 +10,7 @@ public class CameraFollow : MonoBehaviour
     {
         if (!target) return;
 
-        // desired camera position
+        //camera position
         Vector3 desiredPosition = target.position + offset;
 
         // smooth motion

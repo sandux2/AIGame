@@ -19,26 +19,26 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        // --- Movement input ---
+        // Movement input
         float moveX = Input.GetAxis("Horizontal");
         float moveZ = Input.GetAxis("Vertical");
         Vector3 move = new Vector3(moveX, 0, moveZ);
 
-        // --- Rotation ---
+        // Rotation
         if (move.magnitude > 0.1f)
         {
             Quaternion targetRotation = Quaternion.LookRotation(move);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
         }
 
-        // --- Move player ---
+        // Move player 
         controller.Move(move.normalized * speed * Time.deltaTime);
 
-        // --- Gravity ---
+        // Gravity
         if (controller.isGrounded && velocity.y < 0)
             velocity.y = -2f;
 
-        // --- Jump ---
+        //Jump
       if (controller.isGrounded && Input.GetButtonDown("Jump"))
 {
     animator.ResetTrigger("Jump");    // prevent overlap
@@ -57,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
 }
 
 
-        // --- Animation ---
+        //Animation
         animator.SetFloat("Speed", move.magnitude);
     }
 }

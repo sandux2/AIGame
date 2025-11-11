@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class OwnerDetection : MonoBehaviour
 {
-    // 👇 This line creates the field you’ll see in the Inspector
+   
     public GuardChase guard;  
 
     private void OnTriggerEnter(Collider other)
