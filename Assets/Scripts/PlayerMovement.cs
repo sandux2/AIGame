@@ -4,60 +4,54 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 5f;
+    public float rotationSpeed = 200f;
     public float gravity = -9.81f;
     public float jumpHeight = 2f;
 
-    private CharacterController controller;
+    private CharacterController controller; // reference to CharacterController
     private Animator animator;
     private Vector3 velocity;
 
     void Start()
     {
-        controller = GetComponent<CharacterController>();
-        animator = GetComponentInChildren<Animator>();
+        controller = GetComponent<CharacterController>(); // get CharacterController component
+        animator = GetComponentInChildren<Animator>();    // get Animator from child objects
     }
 
     void Update()
     {
-        // Movement input
-        float moveX = Input.GetAxis("Horizontal");
-        float moveZ = Input.GetAxis("Vertical");
-        Vector3 move = new Vector3(moveX, 0, moveZ);
+        float moveZ = Input.GetAxis("Vertical"); // W/S for movement
+        float rotateX = Input.GetAxis("Horizontal"); // A/D for rotation
 
         // Rotation
-        if (move.magnitude > 0.1f)
+        transform.Rotate(Vector3.up * rotateX * rotationSpeed * Time.deltaTime);
+
+        //Forward/backward movement (only W/S) 
+        Vector3 move = transform.forward * moveZ;
+
+        // Jump and gravity
+        if (controller.isGrounded)
         {
-            Quaternion targetRotation = Quaternion.LookRotation(move);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
+            if (velocity.y < 0) velocity.y = -2f;
+
+            if (Input.GetButtonDown("Jump"))
+            {
+                velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+                if (animator) animator.SetTrigger("Jump");
+            }
         }
 
-        // Move player 
-        controller.Move(move.normalized * speed * Time.deltaTime);
+        // Apply movement
+        controller.Move(move * speed * Time.deltaTime);
 
-        // Gravity
-        if (controller.isGrounded && velocity.y < 0)
-            velocity.y = -2f;
-
-        //Jump
-      if (controller.isGrounded && Input.GetButtonDown("Jump"))
-{
-    animator.ResetTrigger("Jump");    // prevent overlap
-    animator.SetTrigger("Jump");      // play jump anim
-    velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-}
-
-
+        // Apply gravity
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
-        if (controller.isGrounded && Input.GetButtonDown("Jump"))
-{
-    Debug.Log("JUMP PRESSED - Grounded = " + controller.isGrounded);
-    velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-    animator.SetTrigger("Jump");
-}
 
-
-        //Animation
-        animator.SetFloat("Speed", move.magnitude);
+        // Animation
+        if (animator)
+        {
+            animator.SetFloat("Speed", Mathf.Abs(moveZ)); 
+        }
     }
 }

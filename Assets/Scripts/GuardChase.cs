@@ -8,47 +8,67 @@ public class GuardChase : MonoBehaviour
     private bool isChasing = false;
 
     [Header("Chase Settings")]
-    public float catchDistance = 1.5f; // how close before stopping
+    public float catchDistance = 1.5f;
+
+    [Header("Door Reference")]
+    public DoorController door; // reference to door
 
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
+        agent = GetComponent<NavMeshAgent>(); // get NavMeshAgent component
     }
 
     void Update()
     {
-        // Follow the player while chasing
+        // chase logic
         if (isChasing && player != null)
         {
             agent.SetDestination(player.position);
 
-            // Check distance only on the XZ plane
-            Vector3 guardPos = new Vector3(transform.position.x, 0, transform.position.z);
-            Vector3 playerPos = new Vector3(player.position.x, 0, player.position.z);
-
-            float distance = Vector3.Distance(guardPos, playerPos);
+            // distance check
+            float distance = Vector3.Distance(
+                new Vector3(transform.position.x, 0, transform.position.z),
+                new Vector3(player.position.x, 0, player.position.z)
+            );
 
             if (distance <= catchDistance)
             {
-                Debug.Log("🚨 Player caught!");
+                Debug.Log("Player caught!");
                 isChasing = false;
-                agent.ResetPath(); // stop moving
+                agent.ResetPath();
+
+                if (door != null && door.isOpen)
+                    door.ToggleDoor(); // close after catching
             }
         }
     }
 
-    // Called when the owner detects the player
-    public void StartChasing(Transform playerTransform)
+    // called by OwnerDetection
+    public void StartChasing(Transform playerTransform) // assign player to chase
     {
         player = playerTransform;
         isChasing = true;
-        Debug.Log("🚨 Guard started chasing the player!");
+        Debug.Log("Guard started chasing the player!"); 
+
+        if (door != null)
+        {
+            Debug.Log("Guard interacting with door: " + door.name);
+            if (!door.isOpen)
+                door.ToggleDoor();
+        }
+        else
+        {
+            Debug.LogWarning("Door reference not assigned in Inspector!");
+        }
     }
 
-    // stop chasing if player escapes
-    public void StopChasing()
+    public void StopChasing() // stop chasing player
     {
         isChasing = false;
         agent.ResetPath();
+        Debug.Log("Guard stopped chasing.");
+
+        if (door != null && door.isOpen)
+            door.ToggleDoor(); // close door when stopping
     }
 }

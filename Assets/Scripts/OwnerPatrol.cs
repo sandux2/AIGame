@@ -7,10 +7,10 @@ public class OwnerPatrol : MonoBehaviour
     private int currentPoint = 0;
     private NavMeshAgent agent;
 
-    void Start()
+    void Start() 
     {
-        agent = GetComponent<NavMeshAgent>();
-        if (patrolPoints.Length == 0)
+        agent = GetComponent<NavMeshAgent>(); // get NavMeshAgent component
+        if (patrolPoints.Length == 0) // check for patrol points
         {
             Debug.LogWarning("No patrol points assigned to owner!");
             return;
@@ -18,22 +18,22 @@ public class OwnerPatrol : MonoBehaviour
         GoToNextPoint();
     }
 
-    void GoToNextPoint()
+    void GoToNextPoint() // set next destination
     {
         if (patrolPoints.Length == 0) return;
         agent.destination = patrolPoints[currentPoint].position;
         currentPoint = (currentPoint + 1) % patrolPoints.Length;
     }
 
-    void Update()
+    void Update() // check if reached destination
     {
-        if (!agent.pathPending && agent.remainingDistance < 0.5f)
-            GoToNextPoint();
+        if (!agent.pathPending && agent.remainingDistance < 0.5f) // close to destination
+            GoToNextPoint(); // go to next point
     }
-    public void StartChasingPlayer(Transform player)
+    public void StartChasingPlayer(Transform player) // start chasing player
 {
-    GetComponent<UnityEngine.AI.NavMeshAgent>().destination = player.position;
-    Debug.Log("Guard is chasing the player!");
+    GetComponent<UnityEngine.AI.NavMeshAgent>().destination = player.position; // set destination to player
+    Debug.Log("Guard is chasing the player!"); 
 }
 
 }
