@@ -9,20 +9,22 @@ public class DoorController : MonoBehaviour
     private Quaternion closedRotation;
     private Quaternion openRotation;
     private NavMeshObstacle obstacle;
-
+    Animator animator;
     void Start()
     {
-        closedRotation = transform.rotation; // initial rotation
-        openRotation = Quaternion.Euler(0, transform.eulerAngles.y + openAngle, 0); // calculate open rotation
+       // closedRotation = transform.rotation; // initial rotation
+        // openRotation = Quaternion.Euler(0, transform.eulerAngles.y + openAngle, 0); // calculate open rotation
+        animator = GetComponentInParent<Animator>(); // get animator from parent (door frame)
         obstacle = GetComponent<NavMeshObstacle>(); // get NavMeshObstacle component
     }
 
     void Update() // smooth door movement
     {
         if (isOpen)
-            transform.rotation = Quaternion.Slerp(transform.rotation, openRotation, Time.deltaTime * speed);
+        animator.SetBool("OpenDoor", true);
+          //  transform.rotation = Quaternion.Slerp(transform.rotation, openRotation, Time.deltaTime * speed);
         else
-            transform.rotation = Quaternion.Slerp(transform.rotation, closedRotation, Time.deltaTime * speed);
+           animator.SetBool("OpenDoor", false);
     }
 
     public void ToggleDoor()

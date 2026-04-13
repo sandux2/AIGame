@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 369ae766de5193c45a2ee66945acbe10
+timeCreated: 1469178162
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 67767
+  packageName: Policeman
+  packageVersion: 1.0
+  assetPath: Assets/Policeman/Demo/Policeman.unity
+  uploadId: 128434

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 2a0c3e65acdbae64a81e0be04580b05c
+timeCreated: 1469178540
+licenseType: Store
+TextScriptImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 67767
+  packageName: Policeman
+  packageVersion: 1.0
+  assetPath: Assets/Policeman/Info.txt
+  uploadId: 128434

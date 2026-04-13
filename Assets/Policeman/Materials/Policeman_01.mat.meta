@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: bf9741108f1adc140b4af92582f7afeb
+timeCreated: 1469178102
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 67767
+  packageName: Policeman
+  packageVersion: 1.0
+  assetPath: Assets/Policeman/Materials/Policeman_01.mat
+  uploadId: 128434

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ef39eaeb429da414389a1870e82d7ba0
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 112000000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 192316
+  packageName: Urban house
+  packageVersion: 1.2
+  assetPath: Assets/Urban House/Scenes/Demo/LightingData.asset
+  uploadId: 433824

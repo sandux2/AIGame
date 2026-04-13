@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ee304bbe8e394f7438663d76d8953098
+timeCreated: 1469178388
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 67767
+  packageName: Policeman
+  packageVersion: 1.0
+  assetPath: Assets/Policeman/Prefabs/Policeman_01.prefab
+  uploadId: 128434
